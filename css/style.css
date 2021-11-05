@@ -10812,7 +10812,7 @@ article.article .article-tags {
 }
 article.article .article-meta {
   overflow-x: auto;
-  margin: -1rem 0 0.75rem;
+  margin: -1rem 0 1.5rem;
 }
 article.article .content {
   word-wrap: break-word;
@@ -10991,6 +10991,9 @@ a.article-nav-next span {
 .navbar-logo img {
   max-height: 1.75rem;
 }
+footer.footer {
+  padding-bottom: 3rem;
+}
 @media screen and (max-width: 768px) {
   footer.footer .level-start {
     text-align: center;
@@ -11003,11 +11006,8 @@ footer.footer .level-end .field {
 @media screen and (max-width: 768px) {
   footer.footer .level-end .field {
     justify-content: center;
-    margin-top: 1rem;
+    margin-bottom: -1rem;
   }
-}
-.footer {
-  padding-bottom: 2.75rem;
 }
 .footer-logo img {
   max-height: 1.75rem;

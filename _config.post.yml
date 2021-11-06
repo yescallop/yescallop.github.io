@@ -20,7 +20,7 @@ widgets:
         follow_link: 
         # Links to be shown on the bottom of the profile widget
         social_links:
-            Github:
+            GitHub:
                 icon: fab fa-github
                 url: 'https://github.com/yescallop'
             Email:

@@ -6,7 +6,7 @@
   <link href="https://yescallop.cn/atom.xml" rel="self"/>
   
   <link href="https://yescallop.cn/"/>
-  <updated>2021-11-05T04:27:11.000Z</updated>
+  <updated>2021-12-17T12:54:20.000Z</updated>
   <id>https://yescallop.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1st PKU GeekGame Writeup</title>
+    <link href="https://yescallop.cn/p/gg-1st-wp/"/>
+    <id>https://yescallop.cn/p/gg-1st-wp/</id>
+    <published>2021-12-13T08:16:16.000Z</published>
+    <updated>2021-12-17T12:54:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>未完待续.</p><span id="more"></span><h2 id="→签到←"><a href="#→签到←" class="headerlink" title="→签到←"></a>→签到←</h2><p>用浏览器打开文件，全选复制，得到两行文本：</p><figure class="highlight plaintext"><figcaption><span>Original Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fa&#123;aeAGetTm@ekaev!</span><br><span class="line">lgHv__ra_ieGeGm_1&#125;</span><br></pre></td></tr></table></figure><p>将两行字符交错置于一行，得 <code>flag&#123;Have_A_Great_Time@GeekGame_v1!&#125;</code>.</p><h2 id="小北问答-Remake"><a href="#小北问答-Remake" class="headerlink" title="小北问答 Remake"></a>小北问答 Remake</h2><ol><li><p>北京大学燕园校区有理科 1 号楼到理科 X 号楼，但没有理科 (X+1) 号及之后的楼。X 是？</p><p> <code>5</code>. 搜索可得.</p></li><li><p>上一届（第零届）比赛的总注册人数有多少？</p><p> <code>407</code>. 见<a href="https://news.pku.edu.cn/xwzh/203d197d93c245a1aec23626bb43d464.htm">相关报道</a>.</p></li><li><p>geekgame.pku.edu.cn 的 HTTPS 证书曾有一次忘记续期了，发生过期的时间是？</p><p> <code>2021-07-11T08:49:53+08:00</code>. 见 <a href="https://search.censys.io/">Censys</a>. 注意时区.</p></li><li><p>2020 年 DEFCON CTF 资格赛签到题的 flag 是？</p><p> <code>OOO&#123;this_is_the_welcome_flag&#125;</code>. 见 <a href="https://scoreboard2020.oooverflow.io/">Scoreboard</a>.</p></li><li><p>在大小为 672328094 * 386900246 的方形棋盘上放 3 枚（相同的）皇后且它们互不攻击，有几种方法？</p><p> <code>2933523260166137923998409309647057493882806525577536</code>. 归纳可得通项.</p></li><li><p>上一届（第零届）比赛的“小北问答1202”题目会把所有选手提交的答案存到 SQLite 数据库的一个表中，这个表名叫？</p><p> <code>submits</code>. 见 <a href="https://github.com/PKU-GeekGame/geekgame-0th/blob/main/src/choice/game/db.py">GitHub</a>.</p></li><li><p>国际互联网由许多个自治系统（AS）组成。北京大学有一个自己的自治系统，它的编号是？</p><p> <code>AS59201</code>. 见 <a href="https://whois.ipip.net/search/PEKING">IPIP.net ASN Search</a>. 排除 CERNET2 节点 <code>AS24349</code>.</p></li><li><p>截止到 2021 年 6 月 1 日，完全由北京大学信息科学技术学院下属的中文名称最长的实验室叫？</p><p> <code>区域光纤通信网与新型光通信系统国家重点实验室</code>. 在该学院<a href="https://eecs.pku.edu.cn/">网站</a>下搜索并手动比较可得.</p></li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;未完待续.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Writeup" scheme="https://yescallop.cn/categories/Writeup/"/>
+    
+    
+    <category term="CTF" scheme="https://yescallop.cn/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>Hackergame 2021 Writeup</title>
@@ -33,7 +54,7 @@
     <category term="Writeup" scheme="https://yescallop.cn/categories/Writeup/"/>
     
     
-    <category term="Hackergame" scheme="https://yescallop.cn/tags/Hackergame/"/>
+    <category term="CTF" scheme="https://yescallop.cn/tags/CTF/"/>
     
   </entry>
   

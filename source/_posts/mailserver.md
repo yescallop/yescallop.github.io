@@ -105,7 +105,7 @@ tags: Linux
 
 最后可以添加 Postfix，Dovecot 和 SASL 到启动组
 
-```sh Shell
+```sh Commands
 sudo update-rc.d postfix defaults
 sudo update-rc.d dovecot defaults
 sudo update-rc.d saslauthd defaults

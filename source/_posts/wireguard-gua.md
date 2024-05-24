@@ -19,25 +19,25 @@ date: 2024-05-24 20:59:00
 
 ## Set up the server
 
-- Set up dynamic DNS for IPv6. Optionally set up dynamic DNS for IPv4 if you need a 6in4 tunnel.
+- Set up dynamic DNS (DDNS) for IPv6. Optionally set up DDNS for IPv4 if you need a 6in4 tunnel.
 
-    For [Aliyun DNS], you can use my project [aliddns] to set up dynamic DNS.
+    For [Aliyun DNS], you can use my project [aliddns] to set up DDNS.
 
-- Set the following parameters in `/etc/sysctl.conf`:
+- Add the following lines to `/etc/sysctl.conf`:
 
     ```text /etc/sysctl.conf
-    net.ipv6.conf.all.accept_ra=2
-    net.ipv6.conf.all.proxy_ndp=1
     net.ipv6.neigh.default.proxy_delay=0
+    net.ipv6.conf.all.proxy_ndp=1
+    net.ipv6.conf.all.accept_ra=2
     net.ipv6.conf.all.forwarding=1
     ```
 
-    Run `sysctl -p /etc/sysctl.conf` to apply the changes.
+    Beware of the order of `accept_ra` and `forwarding`: reversing them may ruin your IPv6 connection. Run `sysctl -p /etc/sysctl.conf` to apply the changes.
 
-- Install [`wg-ndproxy.sh`] to `/usr/local/sbin/` with `755` permission. Modify the `eth_if` variable in it when using a WAN interface other than `eth0`.
+- Install [`wg-ndproxy.sh`] to `/usr/local/sbin/` with `755` permissions. Modify the `eth_if` variable in it when using a WAN interface other than `eth0`.
 - Install [`wg-ndproxy@.service`] to `/etc/systemd/system/`. Run `systemctl daemon-reload`.
 - Modify your WireGuard configuration (say, `/etc/wireguard/wg0.conf`) as follows:
-  - Add the following three lines to the `[Interface]` section:
+  - Add the following lines to the `[Interface]` section:
 
     ```text /etc/wireguard/wg0.conf
     Table = off
@@ -84,7 +84,7 @@ date: 2024-05-24 20:59:00
     - `PrefixLen`: IPv6 prefix length. Defaults to `64`.
     - `Suffix`: IPv6 suffix. Should be a full address.
     - `AddDefaultRouteV6`: Whether to add a `::/0` route with metric `1024` to the interface.
-- Modify your WireGuard configuration. For example, add the following three lines to the `[Interface]` section:
+- Modify your WireGuard configuration. For example, add the following lines to the `[Interface]` section:
 
     ```text WireGuard configuration
     Table = off

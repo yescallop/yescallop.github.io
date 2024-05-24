@@ -31,15 +31,19 @@ tags: Linux
 
 1. 创建一个文件 /etc/postfix/sasl/smtpd.conf，内容如下
 
-        pwcheck_method: saslauthd
-        mech_list: PLAIN LOGIN
+    ```text /etc/postfix/sasl/smtpd.conf
+    pwcheck_method: saslauthd
+    mech_list: PLAIN LOGIN
+    ```
 
 2. 复制 /etc/default/saslauthd 到 /etc/default/saslauthd-postfix，修改内容如下
 
-        START=yes
-        DESC="SASL Auth. Daemon for Postfix"
-        NAME="saslauthd-postf" # 最长为 15 字符
-        OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd"
+    ```text /etc/default/saslauthd-postfix
+    START=yes
+    DESC="SASL Auth. Daemon for Postfix"
+    NAME="saslauthd-postf" # 最长为 15 字符
+    OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd"
+    ```
 
 3. 创建 Postfix 改变根目录所需的子目录，命令：
 
@@ -55,14 +59,16 @@ tags: Linux
 
 6. 编辑 Postfix 配置文件 /etc/postfix/main.cf，以我的域名 yescallop.cn 为例，修改内容如下
 
-        myhostname = yescallop.cn
-        myorigin = $myhostname
-        mydestination = $myhostname, localhost
-        smtpd_sasl_local_domain = $myhostname
-        smtpd_sasl_auth_enable = yes
-        broken_sasl_auth_clients = yes
-        smtpd_sasl_security_options = noanonymous
-        smtpd_recipient_restrictions = permit_sasl_authenticated, reject_unauth_destination
+    ```text /etc/postfix/main.cf
+    myhostname = yescallop.cn
+    myorigin = $myhostname
+    mydestination = $myhostname, localhost
+    smtpd_sasl_local_domain = $myhostname
+    smtpd_sasl_auth_enable = yes
+    broken_sasl_auth_clients = yes
+    smtpd_sasl_security_options = noanonymous
+    smtpd_recipient_restrictions = permit_sasl_authenticated, reject_unauth_destination
+    ```
 
 7. 重启 Postfix （重载配置是不够的）
 
@@ -74,16 +80,22 @@ tags: Linux
 
 1. 编辑 Dovecot 配置文件 /etc/dovecot/dovecot.conf，修改内容如下：
 
-        listen = *
+    ```text /etc/dovecot/dovecot.conf
+    listen = *
+    ```
 
 2. 编辑认证配置文件 /etc/dovecot/conf.d/10-auth.conf，修改内容如下：
 
-        disable_plaintext_auth = no
-        auth_mechanisms = plain login
+    ```text /etc/dovecot/conf.d/10-auth.conf
+    disable_plaintext_auth = no
+    auth_mechanisms = plain login
+    ```
 
 3. 编辑 IMAP 配置文件 /etc/dovecot/conf.d/20-imap.conf，修改内容如下：
 
-        mail_max_userip_connections = 100 # 此处可自定义，不要太小，容易导致连接被拒绝
+    ```text /etc/dovecot/conf.d/20-imap.conf
+    mail_max_userip_connections = 100 # 此处可自定义，不要太小，容易导致连接被拒绝
+    ```
 
 4. 重启 Dovecot
 
@@ -93,8 +105,10 @@ tags: Linux
 
 最后可以添加 Postfix，Dovecot 和 SASL 到启动组
 
-    sudo update-rc.d postfix defaults
-    sudo update-rc.d dovecot defaults
-    sudo update-rc.d saslauthd defaults
+```sh Shell
+sudo update-rc.d postfix defaults
+sudo update-rc.d dovecot defaults
+sudo update-rc.d saslauthd defaults
+```
 
 **All Done!**

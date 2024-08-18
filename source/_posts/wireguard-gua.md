@@ -3,6 +3,7 @@ title: Assigning dynamic IPv6 GUA to WireGuard interface
 categories: 笔记
 tags: Networking
 date: 2024-05-24 20:59:00
+updated: 2024-08-18 13:13:00
 ---
 
 **What you need:**
@@ -89,7 +90,7 @@ date: 2024-05-24 20:59:00
     ```text WireGuard configuration
     Table = off
     PostUp = start powershell -ExecutionPolicy Bypass -File "C:\Program Files\Utils\wg-dynconf.ps1" -Peer rTJmT+GCUbgfWbbcmfvCgbKxZZqLwQaWvIEX8g4+Iwc= -DnsName example.com -DnsType AAAA -Port 23333 -Suffix ::dead:beef -AddDefaultRouteV6
-    PreDown = powershell -File "C:\Program Files\Utils\wg-dynconf.ps1" -Stop
+    PreDown = powershell -ExecutionPolicy Bypass -File "C:\Program Files\Utils\wg-dynconf.ps1" -Stop
     ```
 
 - Start the WireGuard tunnel. Check the UI to see if the endpoint is set. Run `ipconfig` to see if an IPv6 GUA is assigned to the interface. Test the Internet connection by running `ping dns.google -S <assigned GUA>`, for example.
